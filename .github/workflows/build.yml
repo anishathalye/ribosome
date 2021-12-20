@@ -1,0 +1,38 @@
+name: CI
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 8 * * 6'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Download dataset and a pre-trained model
+        run: |
+          wget https://github.com/anishathalye/ribosome/releases/download/v1.0.0/coco-model.pt
+          wget https://github.com/anishathalye/ribosome/releases/download/v1.0.0/coco-tiny100x100.tar.gz
+          tar xzvf coco-tiny100x100.tar.gz
+          mv coco-tiny100x100 coco100x100
+          wget https://github.com/anishathalye/ribosome/releases/download/v1.0.0/coco-tiny-train.csv
+          wget https://github.com/anishathalye/ribosome/releases/download/v1.0.0/coco-tiny-val.csv
+      - name: Run pre-trained model
+        run: |
+          python infer.py --model coco-model.pt --output pretrained.jpg cVwhQ58OSCEOIwF+AigAkT0GAWdwAQs8o04KGYMfHBUANRUOAycUEFABCh6PABIghDBzCa4RTysQYVcvMDdkMypBPSyNAgRCcTf2AC9PfiYSWDw3KTcxPxM2HSqTDSIsgxJFFA+iihERcU4fHEY4Lj0xhw3QJN4OXQwbIzJjVTsUodIVVy3/FY8I/wcui11O
+          [ -f pretrained.jpg ]
+      - name: Train model
+        run: |
+          python train.py --train-data coco-tiny-train.csv --val-data coco-tiny-val.csv --epochs 3 --batch-size 10 --verbose
+          [ -f model.pt ]
+      - name: Run trained model
+        run: |
+          python infer.py --output learned.jpg cVwhQ58OSCEOIwF+AigAkT0GAWdwAQs8o04KGYMfHBUANRUOAycUEFABCh6PABIghDBzCa4RTysQYVcvMDdkMypBPSyNAgRCcTf2AC9PfiYSWDw3KTcxPxM2HSqTDSIsgxJFFA+iihERcU4fHEY4Lj0xhw3QJN4OXQwbIzJjVTsUodIVVy3/FY8I/wcui11O
+          [ -f learned.jpg ]
