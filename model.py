@@ -5,12 +5,12 @@ import torch.nn as nn
 class ResidualBlock(nn.Module):
     def __init__(self, channels):
         super().__init__()
-        self.conv1 = nn.Conv2d(channels, channels, 3, padding='same')
+        self.conv1 = nn.Conv2d(channels, channels, 3, padding="same")
         self.bn1 = nn.BatchNorm2d(channels)
         self.relu = nn.ReLU()
-        self.conv2 = nn.Conv2d(channels, channels, 3, padding='same')
+        self.conv2 = nn.Conv2d(channels, channels, 3, padding="same")
         self.bn2 = nn.BatchNorm2d(channels)
-    
+
     def forward(self, x):
         orig_x = x
         x = self.conv1(x)
@@ -27,7 +27,7 @@ class Model(nn.Module):
         super().__init__()
         self.scale1 = nn.Parameter(torch.randn(6, 6))
         self.bias1 = nn.Parameter(torch.randn(4, 6, 6))
-        self.conv1 = nn.Conv2d(4, 64, 3, padding='same')
+        self.conv1 = nn.Conv2d(4, 64, 3, padding="same")
         self.res1 = ResidualBlock(64)
         self.res2 = ResidualBlock(64)
         self.res3 = ResidualBlock(64)
@@ -36,8 +36,8 @@ class Model(nn.Module):
         self.deconv2 = nn.ConvTranspose2d(64, 64, 3, stride=2, padding=1)
         self.deconv3 = nn.ConvTranspose2d(64, 64, 3, stride=2, padding=1, output_padding=1)
         self.deconv4 = nn.ConvTranspose2d(64, 64, 3, stride=2, padding=1, output_padding=1)
-        self.conv2 = nn.Conv2d(64, 3, 9, padding='same')
-    
+        self.conv2 = nn.Conv2d(64, 3, 9, padding="same")
+
     def forward(self, x):
         x = x.type(torch.float32)
         x = (x - 127.5) / 127.5

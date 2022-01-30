@@ -5,7 +5,8 @@ on:
   schedule:
     - cron: '0 8 * * 6'
 jobs:
-  build:
+  test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -36,3 +37,9 @@ jobs:
         run: |
           python infer.py --output learned.jpg cVwhQ58OSCEOIwF+AigAkT0GAWdwAQs8o04KGYMfHBUANRUOAycUEFABCh6PABIghDBzCa4RTysQYVcvMDdkMypBPSyNAgRCcTf2AC9PfiYSWDw3KTcxPxM2HSqTDSIsgxJFFA+iihERcU4fHEY4Lj0xhw3QJN4OXQwbIzJjVTsUodIVVy3/FY8I/wcui11O
           [ -f learned.jpg ]
+  fmt:
+    name: Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: psf/black@stable

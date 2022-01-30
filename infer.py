@@ -8,15 +8,15 @@ import base64
 from model import *
 
 
-DEFAULT_OUTPUT = 'output.jpg'
-DEFAULT_MODEL = 'model.pt'
+DEFAULT_OUTPUT = "output.jpg"
+DEFAULT_MODEL = "model.pt"
 
 
 def get_opts():
     parser = ArgumentParser()
-    parser.add_argument('hash', help='Base64-encoded hash', type=str)
-    parser.add_argument('--model', help='Model checkpoint', type=str, default=DEFAULT_MODEL)
-    parser.add_argument('--output', help='Output filename', type=str, default=DEFAULT_OUTPUT)
+    parser.add_argument("hash", help="Base64-encoded hash", type=str)
+    parser.add_argument("--model", help="Model checkpoint", type=str, default=DEFAULT_MODEL)
+    parser.add_argument("--output", help="Output filename", type=str, default=DEFAULT_OUTPUT)
     return parser.parse_args()
 
 
@@ -26,7 +26,7 @@ def main():
     # load model
     model = Model()
     # for a single image, faster to do this on CPU
-    model.load_state_dict(torch.load(opts.model, map_location=torch.device('cpu')))
+    model.load_state_dict(torch.load(opts.model, map_location=torch.device("cpu")))
     model.eval()
 
     hash_tensor = torch.tensor(np.array(list(base64.b64decode(opts.hash)), dtype=np.uint8))
@@ -38,5 +38,5 @@ def main():
     Image.fromarray(inverted).save(opts.output)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

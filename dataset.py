@@ -18,7 +18,7 @@ class HashToImage(Dataset):
                 path = line[0]
                 h = np.array(list(base64.b64decode(line[1])), dtype=np.uint8)
                 self.names_and_hashes.append((path, h))
-    
+
     def __len__(self):
         return len(self.names_and_hashes)
 
