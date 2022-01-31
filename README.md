@@ -107,7 +107,7 @@ See `python train.py --help` for all the options.
 
 ## License
 
-Copyright (c) Anish Athalye. Released under the MIT License. See
+Copyright (c) 2021-2022 Anish Athalye. Released under the MIT License. See
 [LICENSE.md](LICENSE.md) for details.
 
 [blog post]: https://www.anishathalye.com/2021/12/20/inverting-photodna/
