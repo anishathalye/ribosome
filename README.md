@@ -105,6 +105,19 @@ python train.py --train-data TRAIN_DATA ...
 
 See `python train.py --help` for all the options.
 
+## Citation
+
+If you use this implementation in your work, please cite the following:
+
+```bibtex
+@misc{athalye2021ribosome,
+  author = {Anish Athalye},
+  title = {Ribosome: Synthesize photos from {PhotoDNA} using machine learning},
+  year = {2021},
+  howpublished = {\url{https://github.com/anishathalye/ribosome}},
+}
+```
+
 ## License
 
 Copyright (c) 2021-2022 Anish Athalye. Released under the MIT License. See
