@@ -120,7 +120,7 @@ If you use this implementation in your work, please cite the following:
 
 ## License
 
-Copyright (c) 2021-2022 Anish Athalye. Released under the MIT License. See
+Copyright (c) Anish Athalye. Released under the MIT License. See
 [LICENSE.md](LICENSE.md) for details.
 
 [blog post]: https://www.anishathalye.com/2021/12/20/inverting-photodna/
