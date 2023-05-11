@@ -112,9 +112,10 @@ If you use this implementation in your work, please cite the following:
 ```bibtex
 @misc{athalye2021ribosome,
   author = {Anish Athalye},
-  title = {Ribosome: Synthesize photos from {PhotoDNA} using machine learning},
-  year = {2021},
-  howpublished = {\url{https://github.com/anishathalye/ribosome}},
+  title = {Inverting {PhotoDNA}},
+  month = dec,
+  year = 2021,
+  howpublished = {\url{https://www.anishathalye.com/2021/12/20/inverting-photodna/}},
 }
 ```
 
