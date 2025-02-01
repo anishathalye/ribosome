@@ -1,4 +1,4 @@
-# Ribosome [![Build Status](https://github.com/anishathalye/ribosome/workflows/CI/badge.svg)](https://github.com/anishathalye/ribosome/actions?query=workflow%3ACI)
+# Ribosome [![Build Status](https://github.com/anishathalye/ribosome/actions/workflows/ci.yml/badge.svg)](https://github.com/anishathalye/ribosome/actions/workflows/ci.yml)
 
 Synthesize photos from PhotoDNA.
 
