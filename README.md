@@ -107,8 +107,6 @@ See `python train.py --help` for all the options.
 
 ## Citation
 
-If you use this implementation in your work, please cite the following:
-
 ```bibtex
 @misc{athalye2021ribosome,
   author = {Anish Athalye},
